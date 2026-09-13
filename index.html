@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa Competencia - SBN vs Librerías (14 Sedes)</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="text-[#0B1F3A]">
+
+  <header class="bg-[#0B1F3A] text-white px-6 py-4 shadow-lg flex justify-between items-center">
+    <div>
+      <h1 class="font-black text-xl uppercase">Mapa Competencia Librerías Cristianas - Managua</h1>
+      <p class="text-sm opacity-80">Casa de la Biblia 27.9% Líder - Septiembre 2026 - JML Media Life</p>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="centrarSBN()" class="bg-[#FFC300] text-[#0B1F3A] font-bold px-4 py-2 rounded-full shadow">★ Centrar SBN Matriz</button>
+      <button onclick="verTodo()" class="bg-white/10 text-white font-bold px-4 py-2 rounded-full border border-white/20">Ver Todo Managua y Tipitapa</button>
+    </div>
+  </header>
+
+  <div class="p-4 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-4">
+    <div class="relative bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden">
+      <div id="map"></div>
+      <div class="absolute bottom-3 left-3 z-[500] bg-white/95 backdrop-blur px-3 py-2 rounded-xl shadow-lg border border-black/5 text-[10px] font-bold">
+        <div class="text-[9px] uppercase tracking-widest mb-1">Cuota Participación</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#0B1F3A; width:12px; height:12px; border-radius:50%;"></div> Casa de la Biblia (Matriz) 27.9%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#1E88E5; width:12px; height:12px; border-radius:50%;"></div> Kairos Nica 17.4%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#64B5F6; width:12px; height:12px; border-radius:50%;"></div> Hispamer 13.1%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#90CAF9; width:12px; height:12px; border-radius:50%;"></div> Sendas 9.8%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#BBDEFB; width:12px; height:12px; border-radius:50%;"></div> Librería Auro 8.4%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#FF9800; width:12px; height:12px; border-radius:50%;"></div> Bible Journaling 7.4%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#FFC107; width:12px; height:12px; border-radius:50%;"></div> Fuente Bendición 5.8%</div>
+        <div class="flex items-center gap-2 mb-1"><div style="background:#FFE082; width:12px; height:12px; border-radius:50%;"></div> Librería El Faro 1.7%</div>
+        <div class="flex items-center gap-2"><div style="background:#E0E0E0; width:12px; height:12px; border-radius:50%;"></div> Otros (SBN/Parte) 8.5%</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <div id="detail-panel" class="bg-white rounded-2xl border border-black/5 shadow-sm p-5">
+        <h2 class="text-xs font-black tracking-widest text-[#8A95A5] uppercase mb-3">Detalle Seleccionado</h2>
+        <div id="detail-name" class="font-black text-lg uppercase leading-tight mb-1">Selecciona una sede</div>
+        <div id="detail-address" class="text-sm text-[#5F6B7A] mb-3">Haz clic en el menú inferior o en un marcador del mapa</div>
+        
+        <div class="grid grid-cols-2 gap-2 text-xs mb-4">
+          <div class="bg-[#F6F7F9] p-3 rounded-xl">
+            <div class="text-[#8A95A5] font-bold">TEL / WA</div>
+            <div id="detail-phone" class="font-bold">-</div>
+          </div>
+          <div class="bg-[#F6F7F9] p-3 rounded-xl">
+            <div class="text-[#8A95A5] font-bold">CUOTA</div>
+            <div id="detail-share" class="font-bold">-</div>
+          </div>
+          <div class="col-span-2 bg-[#0B1F3A] text-white p-3 rounded-xl">
+            <div class="text-[#A0AAB8] font-bold">INVENTARIO</div>
+            <div id="detail-inventory" class="text-sm">-</div>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-between bg-[#F6F7F9] p-3 rounded-xl">
+          <span class="text-xs font-bold text-[#8A95A5]">NIVEL DE AMENAZA</span>
+          <span id="detail-threat" class="px-3 py-1 rounded-full text-xs font-black">-</span>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-black/5 shadow-sm p-5 flex-1 overflow-hidden">
+        <h2 class="text-xs font-black tracking-widest text-[#8A95A5] uppercase mb-4">Todas las Sedes (14) - Mayores</h2>
+        <div id="stores-list" class="space-y-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4">
+    <div class="bg-white rounded-2xl shadow-sm border border-black/5 p-5">
+      <h2 class="font-black text-lg uppercase mb-4">📊 Tabla 14 Sedes - Nivel de Amenaza</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs text-left border-collapse">
+          <thead class="bg-[#0B1F3A] text-white">
+            <tr>
+              <th class="p-3">#</th>
+              <th class="p-3">Tipo</th>
+              <th class="p-3">Nombre Sede</th>
+              <th class="p-3">Dirección</th>
+              <th class="p-3">Coordenadas</th>
+              <th class="p-3">Contacto</th>
+              <th class="p-3">Cuota</th>
+              <th class="p-3 text-center">Nivel Amenaza</th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
