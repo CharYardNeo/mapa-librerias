@@ -7,19 +7,18 @@ const sedes = [
   { id: 5, nombre: "Diario Bíblico - Plaza Natura", tipo: "amarillo", lat: 12.11310493701322, lng: -86.2755646071141, color: "#FF9800", dir: "Plaza Natura, Carretera Masaya", tel: "IG DM", wa: "8186-9943", seg: "46K IG reales", cuota: "7.4% Cuota", inv: "Biblia + Journaling + papelería creativa", amenaza: "Alta", amenazaClass: "threat-high", porcentaje: 7.4 },
   { id: 10, nombre: "Fuente de Bendición #1", tipo: "gris", lat: 12.13150000, lng: -86.24000000, color: "#FFC107", dir: "Managua", tel: "Contacto local", wa: "5785-4894", seg: "Base local", cuota: "5.8% Cuota", inv: "Biblias RVR1960 básicas", amenaza: "Baja", amenazaClass: "threat-low", porcentaje: 5.8 },
   { id: 12, nombre: "Librería El Faro", tipo: "gris-claro", lat: 12.12700000, lng: -86.23800000, color: "#FFE082", dir: "Plaza Sacuanjoche", tel: "IG Contact", wa: "Por confirmar", seg: "1.3K IG", cuota: "1.7% Cuota", inv: "Biblias y libros devocionales", amenaza: "Por Verificar", amenazaClass: "threat-unknown", porcentaje: 1.7 },
-  { id: 2, nombre: "SBN Bello Horizonte", tipo: "sbn", lat: 12.1452985881617, lng: -86.2314436033662, color: "#E0E0E0", dir: "Bello Horizonte, Managua", tel: "2249-8045", wa: "8335-3679", seg: "Red SBN", cuota: "Parte de 27.9%", inv: "8 categorías - respaldo Casa Matriz", amenaza: "Baja", amenazaClass: "threat-leader", porcentaje: 0.1 },
-  { id: 3, nombre: "SBN Tenderi", tipo: "sbn", lat: 12.13980000, lng: -86.24750000, color: "#E0E0E0", dir: "Tenderi, Managua", tel: "2249-8045", wa: "8335-3679", seg: "Red SBN", cuota: "Parte de 27.9%", inv: "8 categorías - respaldo Casa Matriz", amenaza: "Baja", amenazaClass: "threat-leader", porcentaje: 0.1 },
-  { id: 6, nombre: "Diario Bíblico - Metrocentro", tipo: "amarillo", lat: 12.127622363898984, lng: -86.26512774570104, color: "#E0E0E0", dir: "Metrocentro, Managua", tel: "IG DM", wa: "8186-9943", seg: "46K IG reales", cuota: "Parte de 7.4%", inv: "Diario + Biblias Ilustradas", amenaza: "Alta", amenazaClass: "threat-high", porcentaje: 0.1 },
-  { id: 7, nombre: "Diario Bíblico - Galerías", tipo: "amarillo", lat: 12.103603261011465, lng: -86.24946004192199, color: "#E0E0E0", dir: "Galerías Santo Domingo", tel: "IG DM", wa: "8186-9943", seg: "46K IG reales", cuota: "Parte de 7.4%", inv: "Diario + Biblias", amenaza: "Alta", amenazaClass: "threat-high", porcentaje: 0.1 },
-  { id: 11, nombre: "Fuente de Bendición #2", tipo: "gris", lat: 12.14599200, lng: -86.25356600, color: "#E0E0E0", dir: "Managua", tel: "Contacto local", wa: "5785-4894", seg: "Base local", cuota: "Parte de 5.8%", inv: "Biblias y literatura", amenaza: "Baja", amenazaClass: "threat-low", porcentaje: 0.1 },
-  { id: 14, nombre: "Literatura Monte de Sion", tipo: "gris", lat: 12.1517330647389, lng: -86.0931323298743, color: "#E0E0E0", dir: "Tipitapa-Masaya", tel: "Contacto local", wa: "7772-0101", seg: "Base local", cuota: "Otros 8.5%", inv: "Biblias y literatura", amenaza: "Baja", amenazaClass: "threat-low", porcentaje: 0.1 }
+  { id: 2, nombre: "SBN Bello Horizonte", tipo: "sbn", lat: 12.1452985881617, lng: -86.2314436033662, color: "#0B1F3A", dir: "Bello Horizonte, Managua", tel: "2249-8045", wa: "8335-3679", seg: "Red SBN", cuota: "Parte de 27.9%", inv: "8 categorías - respaldo Casa Matriz", amenaza: "Baja", amenazaClass: "threat-leader", porcentaje: 0.1 },
+  { id: 3, nombre: "SBN Tenderi", tipo: "sbn", lat: 12.13980000, lng: -86.24750000, color: "#0B1F3A", dir: "Tenderi, Managua", tel: "2249-8045", wa: "8335-3679", seg: "Red SBN", cuota: "Parte de 27.9%", inv: "8 categorías - respaldo Casa Matriz", amenaza: "Baja", amenazaClass: "threat-leader", porcentaje: 0.1 },
+  { id: 6, nombre: "Diario Bíblico - Metrocentro", tipo: "amarillo", lat: 12.127622363898984, lng: -86.26512774570104, color: "#FF9800", dir: "Metrocentro, Managua", tel: "IG DM", wa: "8186-9943", seg: "46K IG reales", cuota: "Parte de 7.4%", inv: "Diario + Biblias Ilustradas", amenaza: "Alta", amenazaClass: "threat-high", porcentaje: 0.1 },
+  { id: 7, nombre: "Diario Bíblico - Galerías", tipo: "amarillo", lat: 12.103603261011465, lng: -86.24946004192199, color: "#FF9800", dir: "Galerías Santo Domingo", tel: "IG DM", wa: "8186-9943", seg: "46K IG reales", cuota: "Parte de 7.4%", inv: "Diario + Biblias", amenaza: "Alta", amenazaClass: "threat-high", porcentaje: 0.1 },
+  { id: 11, nombre: "Fuente de Bendición #2", tipo: "gris", lat: 12.14599200, lng: -86.25356600, color: "#FFC107", dir: "Managua", tel: "Contacto local", wa: "5785-4894", seg: "Base local", cuota: "Parte de 5.8%", inv: "Biblias y literatura", amenaza: "Baja", amenazaClass: "threat-low", porcentaje: 0.1 },
+  { id: 14, nombre: "Literatura Monte de Sion", tipo: "gris", lat: 12.1517330647389, lng: -86.0931323298743, color: "#9E9E9E", dir: "Tipitapa-Masaya", tel: "Contacto local", wa: "7772-0101", seg: "Base local", cuota: "Otros 8.5%", inv: "Biblias y literatura", amenaza: "Baja", amenazaClass: "threat-low", porcentaje: 0.1 }
 ];
 
 sedes.sort((a, b) => b.porcentaje - a.porcentaje);
 
 const map = L.map('map', { center: [12.13, -86.17], zoom: 11 });
 
-// NUEVO PROVEEDOR DE MAPA: Estable para archivos locales (CartoDB Positron)
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -83,8 +82,8 @@ function actualizarPanel(sede) {
 
   const amenazaSpan = document.getElementById('detail-threat');
   amenazaSpan.textContent = sede.amenaza;
+  // Se eliminó la línea de .style.color para evitar sobreescribir las clases CSS
   amenazaSpan.className = `px-3 py-1 rounded-full text-xs font-black ${sede.amenazaClass}`;
-  amenazaSpan.style.color = sede.color;
 }
 
 const tbody = document.getElementById('table-body');
@@ -114,3 +113,6 @@ function centrarSBN() {
 function verTodo() {
   map.flyTo([12.13, -86.17], 11, { animate: true });
 }
+
+// Fuerza a redimensionar el mapa para evitar secciones bloqueadas o grises al cargar
+setTimeout(() => { map.invalidateSize(); }, 500);
